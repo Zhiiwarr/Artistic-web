@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { initializeApp } from 'firebase/app'
 import { useCollection,useDocument } from 'vuefire'
 import { User } from '@/type/types'
@@ -9,26 +11,26 @@ import { getDocs, getDoc } from "firebase/firestore";
 import { query } from 'firebase/database'
 import {  updateDoc } from 'firebase/firestore';
 // ... other firebase imports
+const firebaseConfig = {
 
-export const firebaseApp = initializeApp({
- 
+  apiKey: "AIzaSyBQsJ_vlhx1V5v1a6nG79cq1r1KLMTYuis",
 
-        apiKey: "AIzaSyCYMC0Wg9hWJ3vSXZth_p1l3D-NkaWfzKM",
-      
-        authDomain: "mhamadweb-7b68f.firebaseapp.com",
-      
-        projectId: "mhamadweb-7b68f",
-      
-        storageBucket: "mhamadweb-7b68f.appspot.com",
-      
-        messagingSenderId: "1018686798545",
-      
-        appId: "1:1018686798545:web:6f79c05186d4ffa6ea23f0"
-   
-      
-})
+  authDomain: "marketbase-e1978.firebaseapp.com",
 
-// used for the firestore refs
+  projectId: "marketbase-e1978",
+
+  storageBucket: "marketbase-e1978.appspot.com",
+
+  messagingSenderId: "714461113144",
+
+  appId: "1:714461113144:web:1e7b0c1d10f52a6b212fcd"
+
+};
+
+
+export const firebaseApp = initializeApp(firebaseConfig)
+
+
 export const db = getFirestore(firebaseApp)
 export const auth = getAuth( firebaseApp)
 

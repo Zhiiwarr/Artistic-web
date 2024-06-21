@@ -13,10 +13,10 @@ export const useActionStore = defineStore('actionStore',()=>{
         await setDocumentRandomId('items',{
             name: object.name,
             description:object.description,
-            price:object.price,
+            price:object.price.toString(),
             quantity: object.quantity,
-            id: object.id,
-            image:  imageUrl.value,
+            artistId: object.id,
+            img:  imageUrl.value,
         })
         }catch(error:any){
             console.log(error)

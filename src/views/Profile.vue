@@ -1,40 +1,40 @@
 <template>
-    <div class="container bg-gray-200 mx-auto px-4">
-      <div class="max-w-xl mx-auto mt-10 bg-white rounded-lg shadow-md p-8">
-        <h1 class="text-2xl font-bold mb-6 text-center">Profile</h1>
+    <div class="container px-4 mx-auto bg-gray-200">
+      <div class="max-w-xl p-8 mx-auto mt-10 bg-white rounded-lg shadow-md">
+        <h1 class="mb-6 text-2xl font-bold text-center">Profile</h1>
         <form @submit.prevent="updateProfile">
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
               Name
             </label>
             <input
               v-model="userName"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
               placeholder="Enter your name"
             />
           </div>
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="description">
               Description
             </label>
             <textarea
               v-model="userDescription"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               id="description"
               placeholder="Enter a description"
             ></textarea>
           </div>
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+            <label class="block mb-2 text-sm font-bold text-gray-700" for="description">
              Number of prodcuts
             </label>
             {{ list?list.length:0 }}
           </div>
           <div class="flex items-center justify-between">
             <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Update
@@ -59,7 +59,7 @@
   onMounted(async () => {
    list.value = await getDocumentsByQuery('items','id',mainStore.user.uid)
     console.log(list)
-    const docRef = doc(db,'user',mainStore.user.uid)
+    const docRef = doc(db,'users',mainStore.user.uid)
     const docSnap = await getDoc(docRef)
 
     if (docSnap.exists()) {

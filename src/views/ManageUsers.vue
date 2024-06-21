@@ -1,8 +1,8 @@
 <template>
-    <div class="container mx-auto px-4">
-      <h1 class="text-3xl font-bold mb-8">Manage Users</h1>
+    <div class="container px-4 mx-auto">
+      <h1 class="mb-8 text-3xl font-bold">Manage Users</h1>
       <div class="overflow-x-auto">
-        <table class="table-auto w-full">
+        <table class="w-full table-auto">
           <thead>
             <tr class="bg-gray-200">
               <th class="px-4 py-2">#</th>
@@ -15,13 +15,13 @@
           </thead>
           <tbody>
             <tr v-for="(item, index) in mainStore.usersList" :key="item.id">
-              <td class="border px-4 py-2">{{ index + 1 }}</td>
-              <td class="border px-4 py-2">{{ item.email }}</td>
-              <td class="border px-4 py-2">{{ item.name }}</td>
-              <td class="border px-4 py-2">{{ item.role }}</td>
-              <!-- <td class="border px-4 py-2">{{ item.quantity }}</td> -->
-              <td class="border px-4 py-2">
-                <button @click="deleteItem(item.id)" class="text-white bg-red-500 px-3 py-1 rounded-full hover:bg-red-600">Delete</button>
+              <td class="px-4 py-2 border">{{ index + 1 }}</td>
+              <td class="px-4 py-2 border">{{ item.email }}</td>
+              <td class="px-4 py-2 border">{{ item.name }}</td>
+              <td class="px-4 py-2 border">{{ item.role }}</td>
+              <!-- <td class="px-4 py-2 border">{{ item.quantity }}</td> -->
+              <td class="px-4 py-2 border">
+                <button @click="deleteItem(item.id)" class="px-3 py-1 text-white bg-red-500 rounded-full hover:bg-red-600">Delete</button>
               </td>
             </tr>
           </tbody>
@@ -43,7 +43,7 @@
   // Fetch items from Firestore
   const fetchItems = async () => {
     try {
-      const collectionRef = collection(db, "user");
+      const collectionRef = collection(db, "users");
     //   const uid = mainStore.user.uid; // Assuming uid is in mainStore.user
   
      
@@ -65,7 +65,7 @@
   // Delete item from Firestore and remove it from local items array
   const deleteItem = async (itemId) => {
     try {
-      await deleteDoc(doc(db, 'user', itemId));
+      await deleteDoc(doc(db, 'users', itemId));
       mainStore.usersList = mainStore.usersList.filter(item => item.id !== itemId);
     } catch (error) {
       console.error('Error deleting item:', error.message);
