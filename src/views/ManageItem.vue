@@ -1,51 +1,51 @@
 <template>
-  <div class="container bg-gray-200 mx-auto px-4">
+  <div class="container px-4 mx-auto bg-gray-200">
    <div class="p-10"></div>
     <div class="overflow-x-auto">
-      <table class="table-auto w-full rounded-lg shadow-md bg-white">
+      <table class="w-full bg-white rounded-lg shadow-md table-auto">
         <thead class="bg-gray-100">
           <tr>
-            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+            <th class="px-4 py-2 text-sm font-medium text-left text-gray-700">
               #
             </th>
-            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+            <th class="px-4 py-2 text-sm font-medium text-left text-gray-700">
               Name
             </th>
-            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+            <th class="px-4 py-2 text-sm font-medium text-left text-gray-700">
               Description
             </th>
-            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+            <th class="px-4 py-2 text-sm font-medium text-left text-gray-700">
               Price
             </th>
-            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+            <th class="px-4 py-2 text-sm font-medium text-left text-gray-700">
               Quantity
             </th>
-            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">
+            <th class="px-4 py-2 text-sm font-medium text-left text-gray-700">
               Actions
             </th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in mainStore.listItem" :key="item.idd">
-            <td class="border px-4 py-2 text-left text-sm text-gray-600">
+            <td class="px-4 py-2 text-sm text-left text-gray-600 border">
               {{ index + 1 }}
             </td>
-            <td class="border px-4 py-2 text-left text-sm text-gray-600">
+            <td class="px-4 py-2 text-sm text-left text-gray-600 border">
               {{ item.name }}
             </td>
-            <td class="border px-4 py-2 text-left text-sm text-gray-600">
+            <td class="px-4 py-2 text-sm text-left text-gray-600 border">
               {{ item.description }}
             </td>
-            <td class="border px-4 py-2 text-left text-sm text-gray-600">
+            <td class="px-4 py-2 text-sm text-left text-gray-600 border">
               {{ item.price }}
             </td>
-            <td class="border px-4 py-2 text-left text-sm text-gray-600">
+            <td class="px-4 py-2 text-sm text-left text-gray-600 border">
               {{ item.quantity }}
             </td>
-            <td class="border px-4 py-2 text-left text-sm">
+            <td class="px-4 py-2 text-sm text-left border">
               <button
                 @click="deleteItem(item.idd)"
-                class="text-white bg-red-500 px-3 py-1 rounded-full hover:bg-red-600"
+                class="px-3 py-1 text-white bg-red-500 rounded-full hover:bg-red-600"
               >
                 Delete
               </button>
@@ -80,7 +80,7 @@ const fetchItems = async () => {
       return; // Handle the case where user ID is not available
     }
 
-    const q = query(collectionRef, where("id", "==", uid));
+    const q = query(collectionRef, where("artistId", "==", uid));
     const querySnapshot = await getDocs(q);
 
     querySnapshot.docs.forEach((doc) => {
